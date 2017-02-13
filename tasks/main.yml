@@ -1,0 +1,22 @@
+---
+# tasks file for bvansomeren.freebsd-php
+
+- name: ensure php packages are installed
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ freebsd_php_packages }}"
+
+
+- name: ensure php-fpm service is enabled
+  command: sysrc -f /etc/rc.conf php_fpm_enable=YES
+
+- name: ensure php-fpm.conf is configured
+  template:
+    src: php-fpm.conf
+    dest: /usr/local/etc/php-fpm.conf
+
+- name: ensure php-fpm is configred
+  service:
+    name: php-fpm
+    state: started

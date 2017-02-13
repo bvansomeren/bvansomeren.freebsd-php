@@ -1,0 +1,29 @@
+---
+# defaults file for bvansomeren.freebsd-php-fpm
+#
+freebsd_php_packages:
+- "php70"
+- "php70-mbstring"
+- "php70-zip"
+- "php70-curl"
+- "php70-gd"
+- "php70-hash"
+- "php70-mysqli"
+- "php70-tokenizer"
+- "php70-xml"
+- "php70-zlib"
+- "php70-ftp"
+- "php70-phar"
+- "php70-extensions"
+
+## Global settings ##
+
+#NOTE: /var is automatically prepended
+freebsd_php_error_log: log/php-fpm.log
+#freebsd_php_syslog_facility: daemon
+#freebsd_php_syslog_ident: php-fpm
+#freebsd_php_log_level: notice
+#freebsd_php_emergency_restart_threshold: 0
+#freebsd_php_emergency_restart_interval: 0
+#freebsd_php_process_control_timeout: 0
+freebsd_php_process_max: 128

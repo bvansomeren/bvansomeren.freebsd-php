@@ -27,3 +27,6 @@ freebsd_php_error_log: log/php-fpm.log
 #freebsd_php_emergency_restart_interval: 0
 #freebsd_php_process_control_timeout: 0
 freebsd_php_process_max: 128
+
+freebsd_php_pools:
+- name: www

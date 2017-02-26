@@ -1,2 +1,7 @@
 ---
 # handlers file for bvansomeren.freebsd-php-fpm
+
+- name: restart php
+  service:
+    name: php-fpm
+    state: restarted

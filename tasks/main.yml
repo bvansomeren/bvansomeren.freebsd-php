@@ -6,10 +6,13 @@
     name: "{{ item }}"
     state: present
   with_items: "{{ freebsd_php_packages }}"
-
+  tags:
+  - install
 
 - name: ensure php-fpm service is enabled
   command: sysrc -f /etc/rc.conf php_fpm_enable=YES
+  tags:
+  - startup
 
 - name: ensure php-fpm.conf is configured
   template:
@@ -17,6 +20,8 @@
     dest: /usr/local/etc/php-fpm.conf
     validate: php-fpm -t --fpm-config %s
   notify: restart php
+  tags:
+  - configure
 
 - name: ensure php-fpm.d pools are set up
   template:
@@ -25,8 +30,12 @@
     validate: php-fpm -t --fpm-config %s
   with_items: "{{ freebsd_php_pools }}"
   notify: restart php
+  tags:
+  - configure
 
 - name: ensure php-fpm is started
   service:
     name: php-fpm
     state: started
+  tags:
+  - startup

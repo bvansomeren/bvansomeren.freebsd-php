@@ -33,6 +33,27 @@
   tags:
   - configure
 
+- name: ensure php.ini is setup
+  copy:
+    src: "/usr/local/etc/php.ini-{{ freebsd_php_ini_sample }}"
+    dest: "/usr/local/etc/php.ini"
+    force: no
+    remote_src: yes
+  notify: restart php
+  tags:
+  - configure
+
+- name: ensure custom global php.ini settings are set
+  ini_file:
+    dest: /usr/local/etc/php.ini
+    section: "{{ item.section | default('PHP') }}"
+    option: "{{ item.option }}"
+    value: "{{ item. value }}"
+  with_items: "{{ freebsd_global_ini_settings }}"
+  notify: restart php
+  tags:
+  - configure
+
 - name: ensure php-fpm is started
   service:
     name: php-fpm

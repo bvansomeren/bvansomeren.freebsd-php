@@ -17,6 +17,7 @@ freebsd_php_packages:
 - "php70-extensions"
 
 ## Global settings ##
+freebsd_php_ini_sample: development
 
 #NOTE: /var is automatically prepended
 freebsd_php_error_log: log/php-fpm.log
@@ -30,3 +31,5 @@ freebsd_php_process_max: 128
 
 freebsd_php_pools:
 - name: www
+
+freebsd_global_ini_settings: []

@@ -1,7 +1,7 @@
 ---
-# defaults file for bvansomeren.freebsd-php-fpm
+# defaults file for bvansomeren.php
 #
-freebsd_php_packages:
+php_packages:
 - "php70"
 - "php70-mbstring"
 - "php70-zip"
@@ -17,19 +17,19 @@ freebsd_php_packages:
 - "php70-extensions"
 
 ## Global settings ##
-freebsd_php_ini_sample: development
+php_ini_sample: development
 
 #NOTE: /var is automatically prepended
-freebsd_php_error_log: log/php-fpm.log
-#freebsd_php_syslog_facility: daemon
-#freebsd_php_syslog_ident: php-fpm
-#freebsd_php_log_level: notice
-#freebsd_php_emergency_restart_threshold: 0
-#freebsd_php_emergency_restart_interval: 0
-#freebsd_php_process_control_timeout: 0
-freebsd_php_process_max: 128
+php_error_log: log/php-fpm.log
+#php_syslog_facility: daemon
+#php_syslog_ident: php-fpm
+#php_log_level: notice
+#php_emergency_restart_threshold: 0
+#php_emergency_restart_interval: 0
+#php_process_control_timeout: 0
+php_process_max: 128
 
-freebsd_php_pools:
+php_pools:
 - name: www
 
-freebsd_global_ini_settings: []
+global_ini_settings: []

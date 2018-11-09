@@ -1,7 +1,8 @@
-bvansomeren.freebsd-php
+bvansomeren.php
 =======================
 
-Installs PHP-FPM with at least one pool. By default it will pick a few changes. You can override most settings.
+Installs PHP-FPM with at least one pool on FreeBSD.
+Uses my defaults, but everything can be overridden.
 
 Requirements
 ------------
@@ -25,7 +26,7 @@ This will deploy a simple php process on 127.0.0.1 port 9000 as user www
 
     - hosts: servers
   	   roles:
-      - bvansomeren.freebsd-php
+      - bvansomeren.php
 
 License
 -------

@@ -1,16 +1,18 @@
 ---
-# tasks file for bvansomeren.freebsd-php
+# tasks file for bvansomeren.php
 
 - name: ensure php packages are installed
   package:
     name: "{{ item }}"
     state: present
-  with_items: "{{ freebsd_php_packages }}"
+  with_items: "{{ php_packages }}"
   tags:
   - install
 
 - name: ensure php-fpm service is enabled
   command: sysrc -f /etc/rc.conf php_fpm_enable=YES
+  register: sysrc_changed
+  changed_when:  "'YES -> YES' not in sysrc_changed.stdout"
   tags:
   - startup
 
@@ -28,14 +30,14 @@
     src: pool.conf
     dest: "/usr/local/etc/php-fpm.d/{{ item.name }}.conf"
     validate: php-fpm -t --fpm-config %s
-  with_items: "{{ freebsd_php_pools }}"
+  with_items: "{{ php_pools }}"
   notify: restart php
   tags:
   - configure
 
 - name: ensure php.ini is setup
   copy:
-    src: "/usr/local/etc/php.ini-{{ freebsd_php_ini_sample }}"
+    src: "/usr/local/etc/php.ini-{{ php_ini_sample }}"
     dest: "/usr/local/etc/php.ini"
     force: no
     remote_src: yes
@@ -49,7 +51,7 @@
     section: "{{ item.section | default('PHP') }}"
     option: "{{ item.option }}"
     value: "{{ item. value }}"
-  with_items: "{{ freebsd_global_ini_settings }}"
+  with_items: "{{ global_ini_settings }}"
   notify: restart php
   tags:
   - configure

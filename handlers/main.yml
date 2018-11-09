@@ -1,5 +1,5 @@
 ---
-# handlers file for bvansomeren.freebsd-php-fpm
+# handlers file for bvansomeren.php
 
 - name: restart php
   service:

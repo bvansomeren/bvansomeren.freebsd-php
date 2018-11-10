@@ -1,20 +1,23 @@
 ---
 # defaults file for bvansomeren.php
 #
+
+php_version: 72
+
 php_packages:
-- "php70"
-- "php70-mbstring"
-- "php70-zip"
-- "php70-curl"
-- "php70-gd"
-- "php70-hash"
-- "php70-mysqli"
-- "php70-tokenizer"
-- "php70-xml"
-- "php70-zlib"
-- "php70-ftp"
-- "php70-phar"
-- "php70-extensions"
+- "php{{ php_version }}"
+- "php{{ php_version }}-mbstring"
+- "php{{ php_version }}-zip"
+- "php{{ php_version }}-curl"
+- "php{{ php_version }}-gd"
+- "php{{ php_version }}-hash"
+- "php{{ php_version }}-mysqli"
+- "php{{ php_version }}-tokenizer"
+- "php{{ php_version }}-xml"
+- "php{{ php_version }}-zlib"
+- "php{{ php_version }}-ftp"
+- "php{{ php_version }}-phar"
+- "php{{ php_version }}-extensions"
 
 ## Global settings ##
 php_ini_sample: development
